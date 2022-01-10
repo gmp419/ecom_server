@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\VisitorController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\SiteInfoController;
+use App\Http\Controllers\Admin\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,6 @@ Route::post('/contact-us', [ContactController::class, 'contactUs']);
 
 //Site info
 Route::get('/site-info', [SiteInfoController::class, 'siteInfo']);
+
+//Category
+Route::get('/category', [CategoryController::class, 'getCategories']);
