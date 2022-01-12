@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\VisitorController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\SiteInfoController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProductListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,11 @@ Route::get('/site-info', [SiteInfoController::class, 'siteInfo']);
 
 //Category
 Route::get('/category', [CategoryController::class, 'getCategories']);
+
+//Product list
+Route::get('/product-by-remark/{remark}', [ProductListController::class, 'getProductListByRemark']);
+
+Route::get('/product-by-category/{category}', [ProductListController::class, 'getProductListByCategory']);
+
+Route::get('/product-by-subcategory/{category}/{subcategory}', [ProductListController::class, 'getProductListBySubategory']);
+
