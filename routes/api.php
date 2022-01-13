@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\SiteInfoController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductListController;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\ProductDetailsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,3 +46,6 @@ Route::get('/product-by-subcategory/{category}/{subcategory}', [ProductListContr
 
 //Slider images
 Route::get('/slider-images', [SliderController::class, 'getSliderImages']);
+
+//Product details
+Route::get('/product-details/{id}', [ProductDetailsController::class, 'getProductDetails']);
