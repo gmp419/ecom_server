@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductListController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ProductDetailsController;
+use App\Http\Controllers\Admin\NotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,3 +50,6 @@ Route::get('/slider-images', [SliderController::class, 'getSliderImages']);
 
 //Product details
 Route::get('/product-details/{id}', [ProductDetailsController::class, 'getProductDetails']);
+
+//Notification
+Route::get('/notification', [NotificationController::class, 'getNotification']);
