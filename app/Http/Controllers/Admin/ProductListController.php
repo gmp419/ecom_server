@@ -41,5 +41,15 @@ class ProductListController extends Controller
         return response()->json($productList);
     }
 
+    public function getSuggestedProduct(Request $request)
+    {
+        $subcategory = $request->key;
+        $productList = ProductList::where('subcategory',$subcategory)
+            ->orderBy('id', 'desc')
+            ->limit(6)
+            ->get();
+        return response()->json($productList);
+    }
+
 
 }

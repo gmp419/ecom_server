@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ProductDetailsController;
 use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Admin\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +58,8 @@ Route::get('/product-by-category/{category}', [ProductListController::class, 'ge
 
 Route::get('/product-by-subcategory/{category}/{subcategory}', [ProductListController::class, 'getProductListBySubategory']);
 
+Route::get('/suggested-product/{key}', [ProductListController::class, 'getSuggestedProduct']);
+
 //Slider images
 Route::get('/slider-images', [SliderController::class, 'getSliderImages']);
 
@@ -67,4 +70,7 @@ Route::get('/product-details/{id}', [ProductDetailsController::class, 'getProduc
 Route::get('/notification', [NotificationController::class, 'getNotification']);
 
 //Search
-Route::get('/search/{key}', [ProductListController::class, 'searchProduct']);
+Route::get('/search/{subcategory}', [ProductListController::class, 'searchProduct']);
+
+//reviews
+Route::get('/review/{id}', [ReviewController::class, 'getReviews']);
