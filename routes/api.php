@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\ProductDetailsController;
 use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\ReviewController;
+use App\Http\Controllers\Admin\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,3 +75,8 @@ Route::get('/search/{subcategory}', [ProductListController::class, 'searchProduc
 
 //reviews
 Route::get('/review/{id}', [ReviewController::class, 'getReviews']);
+
+//Add to cart
+Route::post('/add-to-cart', [CartController::class, 'addToCart']);
+
+Route::get('/cart-count/{user_email}', [CartController::class, 'countCart']);
