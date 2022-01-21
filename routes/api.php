@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\CartController;
+use App\Http\Controllers\Admin\FavouriteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,3 +81,10 @@ Route::get('/review/{id}', [ReviewController::class, 'getReviews']);
 Route::post('/add-to-cart', [CartController::class, 'addToCart']);
 
 Route::get('/cart-count/{user_email}', [CartController::class, 'countCart']);
+
+//Favorite product
+Route::get('/add-to-favorite/{product_code}/{email}', [FavouriteController::class, 'addToFavorite']);
+
+Route::get('/favorite-list/{email}', [FavouriteController::class, 'favoriteList']);
+
+Route::post('/remove-favorite/{product_code}/{email}', [FavouriteController::class, 'removeFavorite']);
