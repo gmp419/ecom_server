@@ -82,9 +82,23 @@ Route::post('/add-to-cart', [CartController::class, 'addToCart']);
 
 Route::get('/cart-count/{user_email}', [CartController::class, 'countCart']);
 
+//cart list route by email
+Route::get('/cart-list/{user_email}', [CartController::class, 'getCartList']);
+
+//remove cart item
+Route::post('/remove-cart-item/{user_email}/{id}', [CartController::class, 'removeCartItem']);
+
+Route::post('/cartItemPlus/{id}/{quanity}/{price}', [CartController::class, 'cartItemPlus']);
+
+Route::post('/cartItemMinus/{id}/{quanity}/{price}', [CartController::class, 'cartItemMinus']);
+
+
 //Favorite product
 Route::get('/add-to-favorite/{product_code}/{email}', [FavouriteController::class, 'addToFavorite']);
 
 Route::get('/favorite-list/{email}', [FavouriteController::class, 'favoriteList']);
 
 Route::post('/remove-favorite/{product_code}/{email}', [FavouriteController::class, 'removeFavorite']);
+
+//Order
+Route::post('/order/{user_email}', [CartController::class, 'order']);
