@@ -8,10 +8,7 @@ use App\Models\Cart;
 use App\Models\ProductList;
 use App\Models\CartOrder;
 use Carbon\Carbon;
-use Error;
-use Exception;
-use PhpParser\Error as PhpParserError;
-use PHPUnit\Framework\Error as FrameworkError;
+
 
 class CartController extends Controller
 {
@@ -130,6 +127,8 @@ class CartController extends Controller
                 'email' => $email,
                 'product_name' => $item['product_name'],
                 'total_price' => $item['total_price'],
+                'unit_price' => $item['unit_price'],
+                'quantity' => $item['quantity'],
                 'delivery_address' => $request->delivery_address,
                 'contact' => $request->contact,
                 'delivery_charge' => $request->delivery_charge,
@@ -140,7 +139,7 @@ class CartController extends Controller
                 'urgent_delivery' => $request->urgent_delivery,
             ]);
 
-            if($result == 1){
+            if ($result == 1) {
                 Cart::where('user_email', $email)->delete();
 
                 return response()->json([
@@ -154,5 +153,15 @@ class CartController extends Controller
             'status' => 'error',
             'message' => 'Something went wrong.',
         ]);
+    }
+
+    public function orderHistory(Request $request)
+    {
+        $email = $request->user_email;
+        $orderList = CartOrder::where('email', $email)
+            ->orderBy('id', 'desc')
+            ->get();
+
+        return $orderList;
     }
 }

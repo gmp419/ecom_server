@@ -102,3 +102,6 @@ Route::post('/remove-favorite/{product_code}/{email}', [FavouriteController::cla
 
 //Order
 Route::post('/order/{user_email}', [CartController::class, 'order']);
+
+//Order History
+Route::get('/order-history/{user_email}', [CartController::class, 'orderHistory']);

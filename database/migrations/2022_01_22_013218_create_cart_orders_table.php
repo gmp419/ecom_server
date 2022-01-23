@@ -21,6 +21,8 @@ class CreateCartOrdersTable extends Migration
             $table->string('color');
             $table->string('email');
             $table->string('product_name');
+            $table->string('unit_price');
+            $table->string('quantity');
             $table->string('total_price');
             $table->text('delivery_address');
             $table->string('contact');
