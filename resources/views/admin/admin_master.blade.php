@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{ asset('backend/assets/css/dark-theme.css') }}" />
     <link rel="stylesheet" href="{{ asset('backend/assets/css/semi-dark.css') }}" />
     <link rel="stylesheet" href="{{ asset('backend/assets/css/header-colors.css') }}" />
+
     <title>Easy Shop Admin Dashboard </title>
 </head>
 
@@ -41,10 +42,10 @@
         @yield('admin')
         <!--end page wrapper -->
         @include('admin.layout.footer')
-        
+
     </div>
     <!--end wrapper-->
- 
+
     <!-- Bootstrap JS -->
     <script src="{{ asset('backend/assets/js/bootstrap.bundle.min.js') }}"></script>
     <!--plugins-->
@@ -59,6 +60,7 @@
     <script src="{{ asset('backend/assets/plugins/sparkline-charts/jquery.sparkline.min.js') }}"></script>
     <script src="{{ asset('backend/assets/plugins/jquery-knob/excanvas.js') }}"></script>
     <script src="{{ asset('backend/assets/plugins/jquery-knob/jquery.knob.js') }}"></script>
+
     <script>
         $(function() {
             $(".knob").knob();
@@ -67,6 +69,9 @@
     <script src="{{ asset('backend/assets/js/index.js') }}"></script>
     <!--app JS-->
     <script src="{{ asset('backend/assets/js/app.js') }}"></script>
+
+    </script>
+   
 </body>
 
 </html>

@@ -323,10 +323,16 @@
             </div>
             <div class="user-box dropdown">
                 <a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="assets/images/avatars/avatar-2.png" class="user-img" alt="user avatar">
+                    @php
+                    $data = App\Models\User::find(1);
+                    @endphp
+
+                    <img src="{{$data->profile_photo_path ? 
+                                            url('upload/adminImages/'.$data->profile_photo_path) : 
+                                            url('upload/no_image.jpg')}}" class="user-img" alt="user avatar">
                     <div class="user-info ps-3">
-                        <p class="user-name mb-0">Pauline Seitz</p>
-                        <p class="designattion mb-0">Web Designer</p>
+                        <p class="user-name mb-0">{{$data->name}}</p>
+                        <!-- <p class="designattion mb-0">Web Designer</p> -->
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
