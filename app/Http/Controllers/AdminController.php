@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -36,6 +37,41 @@ class AdminController extends Controller
         $user->save();
 
         return redirect()->back()->with('success', 'Profile updated successfully');
+
+    }
+
+    public function change_password(){
+        return view('backend.admin.password');
+    }
+
+    public function update_password(Request $request){
+
+        $validate = $request->validate([
+            'current_password' => 'required',
+            'password' => 'required|confirmed|min:6',
+        ]);
+
+        // $hashedPassword = User::find(1)->password;
+        // if (Hash::check($request->current_password,$hashedPassword)) {
+        //     $user = User::find(1);
+        //     $user->password = Hash::make($request->password);
+        //     $user->save();
+        //     Auth::logout();
+        //     return redirect()->back();
+        // }
+        // else{
+        //     return redirect()->back()->with('error','Something went wrong');
+        // }
+
+        $user = User::find(1);
+        if(Hash::check($request->current_password, $user->password)){
+            $user->password = Hash::make($request->password);
+            $user->save();
+            return redirect('/login')->with('success', 'Password changed successfully');
+        }
+        else{
+            return redirect('/dashboard');
+        }
 
     }
 }

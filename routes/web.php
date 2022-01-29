@@ -25,7 +25,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::get('/logout', [AdminController::class, 'logout'])->name('adminLogout');
 
 
-Route::prefix('admin')->group(function (){
+Route::prefix('admin')->group(function () {
     Route::get('/user/profile', [AdminController::class, 'profile'])->name('adminProfile');
     Route::post('/user/profile/edit', [AdminController::class, 'edit_profile'])->name('edit_profile');
+    Route::get('/user/profile/edit/password', [AdminController::class, 'change_password'])->name('changePassword');
+    Route::post('/user/profile/update/password', [AdminController::class, 'update_password'])->name('update_password');
 });
