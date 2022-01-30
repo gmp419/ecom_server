@@ -4,48 +4,57 @@
 
 <div class="page-wrapper">
     <div class="page-content">
+        @if(session('error'))
+        <div class="alert alert-danger">
+            {{session('error')}}
+        </div>
+        @elseif(session('success'))
+        <div class="alert alert-success">
+            {{session('success')}}
+
+        </div>
+        @endif
         <div class="card radius-10">
             <div class="card-body">
                 <div class="d-flex align-items-center">
                     <div>
-                        <h5 class="mb-0">Category list</h5>
+                        <h5 class="mb-0">Slider Images</h5>
                     </div>
                     <!-- <div class="font-22 ms-auto"><i class="bx bx-dots-horizontal-rounded"></i>
                     </div> -->
                 </div>
                 <hr>
+
                 <table class="table-responsive">
                     <table class="table align-middle mb-0">
                         <thead class="table-light">
                             <tr>
                                 <th>No.</th>
                                 <th>Image</th>
-                                <th>Name</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
 
 
-                            @foreach($categories as $category)
+                            @foreach($images as $image)
                             <tr>
-                                <td>{{$category->id}}</td>
+                                <td>{{$image->id}}</td>
                                 <td>
                                     <div class="d-flex align-items-center">
-                                        <div class="recent-product-img">
-                                            <img src="{{$category->category_image}}" alt="">
+                                        <div style="width: 100px;height:100px" class="align-items-center d-flex">
+                                            <img src="{{$image->slider_image}}" alt="" class="w-100 h-auto">
                                         </div>
 
                                     </div>
                                 </td>
-                                <td>{{$category->category_name}}</td>
 
                                 <td>
                                     <div class="d-flex order-actions">
-                                        <a href="{{url('/category/edit',$category->id)}}" type="button" class="bg-facebook">
+                                        <a href="{{route('slider.edit',$image->id)}}" type="button" class="bg-facebook">
                                             <i class="bx bx-pencil text-white "></i>
                                         </a>
-                                        <a href="{{route('deleteCategory',$category->id)}}" class="ms-4 bg-danger" id="delete" style="cursor: pointer;"><i class="bx bx-trash text-white"></i></a>
+                                        <a href="{{route('slider.destroy',$image->id)}}" class="ms-4 bg-danger" id="delete" style="cursor: pointer;"><i class="bx bx-trash text-white"></i></a>
                                     </div>
                                 </td>
                             </tr>
@@ -55,7 +64,7 @@
                     </table>
 
                     <div class="d-flex justify-content-end mt-2">
-                        {{$categories->links('pagination::bootstrap-4')}}
+                        {{$images->links('pagination::bootstrap-4')}}
                     </div>
                 </table>
 

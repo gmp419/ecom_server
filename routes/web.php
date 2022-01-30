@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\SliderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SubcategoryController;
@@ -45,7 +46,15 @@ Route::prefix('category')->group(function(){
 
 Route::post('/subcategory/update/{id}', [SubcategoryController::class, 'update'])->name('updateSubcategory');
 Route::get('/subcategory/delete/{id}', [SubcategoryController::class, 'delete'])->name('deleteSubcategory');
-
 Route::resource('subcategory', SubcategoryController::class);
 
+
+Route::prefix('slider')->group(function(){
+    Route::get('/all', [SliderController::class, 'index'])->name('slider.all');
+    Route::get('/add', [SliderController::class, 'create'])->name('slider.add');
+    Route::post('/store', [SliderController::class, 'store'])->name('slider.store');
+    Route::get('/edit/{id}', [SliderController::class, 'edit'])->name('slider.edit');
+    Route::post('/update/{id}', [SliderController::class, 'update'])->name('slider.update');
+    Route::get('/delete/{id}', [SliderController::class, 'destroy'])->name('slider.destroy');
+});
 
