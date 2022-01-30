@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SubcategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +42,10 @@ Route::prefix('category')->group(function(){
     Route::post('/update/{id}', [CategoryController::class, 'update_category'])->name('updateCategory');
     Route::get('/delete/{id}', [CategoryController::class, 'delete_category'])->name('deleteCategory');
 });
+
+Route::post('/subcategory/update/{id}', [SubcategoryController::class, 'update'])->name('updateSubcategory');
+Route::get('/subcategory/delete/{id}', [SubcategoryController::class, 'delete'])->name('deleteSubcategory');
+
+Route::resource('subcategory', SubcategoryController::class);
+
+
