@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="{{ asset('backend/assets/css/dark-theme.css') }}" />
     <link rel="stylesheet" href="{{ asset('backend/assets/css/semi-dark.css') }}" />
     <link rel="stylesheet" href="{{ asset('backend/assets/css/header-colors.css') }}" />
+    <link href="{{ asset('backend/assets/plugins/input-tags/css/tagsinput.css') }}" rel="stylesheet" />
+
 
 
     <title>Easy Shop Admin Dashboard </title>
@@ -71,7 +73,9 @@
     <!--app JS-->
     <script src="{{ asset('backend/assets/js/app.js') }}"></script>
 
+    <script src="{{ asset('backend/assets/plugins/input-tags/js/tagsinput.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 
 
     <script type="text/javascript">
