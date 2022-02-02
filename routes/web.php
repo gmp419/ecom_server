@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CartController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductListController;
 use App\Http\Controllers\Admin\SliderController;
@@ -66,5 +67,12 @@ Route::prefix('product')->group(function(){
     Route::get('/edit/{id}', [ProductListController::class, 'edit'])->name('product.edit');
     Route::post('/update/{id}', [ProductListController::class, 'update'])->name('product.update');
     Route::get('/delete/{id}', [ProductListController::class, 'delete'])->name('product.delete');
+});
+
+Route::prefix('orders')->group(function(){
+    Route::get('/pending', [CartController::class, 'pending'])->name('order.pending');
+    Route::get('/processing', [CartController::class, 'processing'])->name('order.processing');
+    Route::get('/completed', [CartController::class, 'completed'])->name('order.completed');
+    Route::post('/status/{id}', [CartController::class, 'status'])->name('order.status');
 });
 

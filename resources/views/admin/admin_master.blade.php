@@ -76,8 +76,6 @@
     <script src="{{ asset('backend/assets/plugins/input-tags/js/tagsinput.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-
-
     <script type="text/javascript">
         $(function() {
             $(document).on('click', '#delete', function(e) {
@@ -108,13 +106,13 @@
             $(document).on('click', '#success', function(e) {
                 e.preventDefault();
                 var link = $(this).attr("href");
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'Your work has been saved',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Your work has been saved',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             });
 
         });

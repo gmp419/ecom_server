@@ -138,7 +138,7 @@ class CartController extends Controller
                 'order_status' => 'pending',
                 'urgent_delivery' => $request->urgent_delivery,
             ]);
-
+        }
             if ($result == 1) {
                 Cart::where('user_email', $email)->delete();
 
@@ -147,7 +147,7 @@ class CartController extends Controller
                     'message' => 'Order placed successfully.',
                 ]);
             }
-        }
+        
 
         return response()->json([
             'status' => 'error',
@@ -163,5 +163,29 @@ class CartController extends Controller
             ->get();
 
         return $orderList;
+    }
+
+    // using for backend admin panel
+    public function pending(){
+        $pending_orders = CartOrder::where('order_status', 'pending')->orderBy('id', 'desc')->paginate(10);
+        return view('backend.orders.pending', compact('pending_orders'));
+    }
+
+    public function processing(){
+        $processing_orders = CartOrder::where('order_status', 'process')->orderBy('id', 'desc')->paginate(10);
+        return view('backend.orders.processing', compact('processing_orders'));
+    }
+
+    public function completed(){
+        $completed_orders = CartOrder::where('order_status', 'complete')->orderBy('id', 'desc')->paginate(10);
+        return view('backend.orders.completed', compact('completed_orders'));
+    }
+
+    public function status(Request $request){
+        $order = CartOrder::find($request->id);
+        $order->order_status = $request->order_status;
+        $order->save();
+
+        return redirect()->back()->with('success', 'Order status updated successfully.');
     }
 }
